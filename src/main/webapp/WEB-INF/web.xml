@@ -1,0 +1,18 @@
+<web-app>
+	<servlet>
+		<servlet-name>HelloServletMapping</servlet-name>
+		<servlet-class>Hello_Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HelloServletMapping</servlet-name>
+		<url-pattern>/HelloServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>TopMapping</servlet-name>
+		<servlet-class>top</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TopMapping</servlet-name>
+		<url-pattern>/top</url-pattern>
+	</servlet-mapping>
+</web-app>
