@@ -12,19 +12,19 @@
   <body>
     <header>
         <div class="logo">
-          <a href="top.html"><br>Studio Q</a>
+          <a href="top.jsp"><br>Studio Q</a>
         </div>
       <nav>
         <ul>
           <li>
-            <a href="top.html">トップ</a>
+            <a href="top.jsp">トップ</a>
           </li>
           <li>ナビ2</li>
           <li>ナビ3</li>
           <li>
-            <a href="profile.html">自己紹介</a></li>
+            <a href="profile.jsp">自己紹介</a></li>
             <li>
-              <a href="form.html">お問い合わせ</a></li>
+              <a href="form.jsp">お問い合わせ</a></li>
         </ul>
       </nav>
     </header>
