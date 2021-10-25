@@ -29,14 +29,14 @@
       </nav>
     </header>
 
-    <form action="style.css" method="post" class="form-contents" name="contact">
+    <form action="/Web_project2/inquiries.jsp" method="post" class="form-contents">
       <h3>名前</h3><input type="text" name="user_name" id="name">
       <h3 id="gender-t">性別</h3><input type="radio" name="gender"  id="gender0" value ="0">
       <p id="gender-m">男性</p><input type="radio" name="gender"  id="gender1" value ="1">
       <p id="gender-f">女性</p>
       <h3 id="form-title">問合内容</h3><textarea name="form_box" id="form-box">ここに記入してください</textarea>
       <h3 id="file-title">添付ファイル</h3><input type="file" name="file" id="form-file">
-      <input name="btn_submit" value="送信" type="submit" id ="submit-btn" onclick="return check();">
+      <input name="btn_submit" value="送信" type="submit" id ="submit-btn">
     </form>
 
     <footer>

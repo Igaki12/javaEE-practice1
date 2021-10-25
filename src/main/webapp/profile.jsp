@@ -40,7 +40,7 @@
 
     <div class="self-introduction">
       <h3>自己紹介</h3>
-      <p>文章<br>文章<br>文章<br>文章</p>
+      <p>姫路生まれ姫路育ち<br>他の城を見かけるとつい姫路城と比べてしまう（やはり姫路城がNo1）<br>最近は近所の牧場に行くのが週1の楽しみ<br>そこにいる猪とふれあいたい。</p>
     </div>
     <footer>
       <p>2021 All Rights Reserved</p>
