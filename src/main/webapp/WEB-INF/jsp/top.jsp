@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -32,7 +33,7 @@
       <section class="main-text">
         <p>ここは文章が入ります。ここは文章が入ります。ここは文章が入ります。</p>
         <h2>ポートフォリオ案１：塾の落とし物管理アプリケーション</h2>
-        <p>バイト先の塾講師の方々が落とし物の管理に手を焼いていて、アプリで効率化できるのではないかと思い、開発する。
+        <p>バイト先の塾講師の方々が落とし物の管理に手を焼いていて、アプリで効率化できるのではないかと思い、作ってみようと。
           <br>
           <br>文章
           <br>文章

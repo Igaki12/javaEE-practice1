@@ -29,7 +29,7 @@
       </nav>
     </header>
 
-    <form action="/Web_project2/inquiries.jsp" method="post" class="form-contents">
+    <form action="/Web_project2/InquiriesServlet" method="post" class="form-contents" enctype="multipart/form-data" >
       <h3>名前</h3><input type="text" name="user_name" id="name">
       <h3 id="gender-t">性別</h3><input type="radio" name="gender"  id="gender0" value ="0">
       <p id="gender-m">男性</p><input type="radio" name="gender"  id="gender1" value ="1">

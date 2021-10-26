@@ -8,11 +8,12 @@
 		<url-pattern>/HelloServlet</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<servlet-name>TopMapping</servlet-name>
-		<servlet-class>top</servlet-class>
+		<servlet-name>TopServletMapping</servlet-name>
+		<servlet-class>Top_Servlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>TopMapping</servlet-name>
+		<servlet-name>TopServletMapping</servlet-name>
 		<url-pattern>/top</url-pattern>
 	</servlet-mapping>
+
 </web-app>
