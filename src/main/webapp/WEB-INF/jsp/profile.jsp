@@ -13,16 +13,16 @@
         <p class="title">自己紹介
         </p>
       <nav>
-        <ul class="nav-list">
-          <li class="nav-list-item">
-            <a href="top.jsp">トップ</a>
+        <ul>
+          <li>
+            <a href="top">トップ</a>
           </li>
-          <li class="nav-list-item">ナビ2</li>
-          <li class="nav-list-item">ナビ3</li>
-          <li class="nav-list-item">
-            <a href="profile.jsp">自己紹介</a></li>
-            <li class="nav-list-item">
-              <a href="form.jsp">お問い合わせ</a></li>
+          <li>ナビ2</li>
+          <li>ナビ3</li>
+          <li>
+            <a href="profile">自己紹介</a></li>
+            <li>
+              <a href="form">お問い合わせ</a></li>
         </ul>
       </nav>
     </header>

@@ -13,25 +13,25 @@
   <body>
     <header>
         <div class="logo">
-          <a href="top.jsp"><br>Studio Q</a>
+          <a href="top"><br>Studio Q</a>
         </div>
       <nav>
         <ul>
           <li>
-            <a href="top.jsp">トップ</a>
+            <a href="top">トップ</a>
           </li>
           <li>ナビ2</li>
           <li>ナビ3</li>
           <li>
-            <a href="profile.jsp">自己紹介</a></li>
+            <a href="profile">自己紹介</a></li>
             <li>
-              <a href="form.jsp">お問い合わせ</a></li>
+              <a href="form">お問い合わせ</a></li>
         </ul>
       </nav>
     </header>
 
       <section class="main-text">
-        <p>ここは文章が入ります。ここは文章が入ります。ここは文章が入ります。</p>
+        <p>Java等で個人製作したアプリケーションを載せていきます</p>
         <h2>ポートフォリオ案１：塾の落とし物管理アプリケーション</h2>
         <p>バイト先の塾講師の方々が落とし物の管理に手を焼いていて、アプリで効率化できるのではないかと思い、作ってみようと。
           <br>

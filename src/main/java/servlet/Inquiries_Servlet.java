@@ -1,7 +1,10 @@
+package servlet;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.jar.Attributes.Name;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -10,14 +13,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-@WebServlet("/InquiriesServlet")
+import model.Human;
+
 @MultipartConfig(location="/tmp", maxFileSize=1048576)
 public class Inquiries_Servlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	@Override
 	
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response)throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		
 		
 		
 		Part part = request.getPart("file");
@@ -26,25 +32,26 @@ public class Inquiries_Servlet extends HttpServlet {
 		
 		
 		String name = request.getParameter("user_name");
-		String gender = request.getParameter("gender");
+		String intgender = request.getParameter("gender");
 		String box = request.getParameter("form_box");
 		
-		String msg = name + "," + gender + "," + box + "are registered.";
+		String gender = null;
+		if(intgender.equals("0")) {
+			gender = "男性";
+		}
+		if(intgender.equals("1")) {
+			gender = "女性";
+		}
+		
+		Human human = new Human(name,gender,box);
+		request.setAttribute("human", human);
+		System.out.println(human);
 		
 		
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE html>");
-		out.println("<html>");
-		out.println("<head>");
-		out.println("<meta charset=\"UTF-8\">");
-		out.println("<title>Result</title>");
-		out.println("</head>");
-		out.println("<body>");
-		out.println("<p>" + msg + "</p>");
-		out.println("<img src=");
-		out.println("</body>");
-		out.println("</html>");
+		
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/inquiries.jsp");
+		dispatcher.forward(request,response);
 		
 		
 	}

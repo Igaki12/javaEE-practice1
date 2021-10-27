@@ -7,13 +7,41 @@
 		<servlet-name>HelloServletMapping</servlet-name>
 		<url-pattern>/HelloServlet</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>TopServletMapping</servlet-name>
-		<servlet-class>Top_Servlet</servlet-class>
+		<servlet-class>servlet.Top_Servlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>TopServletMapping</servlet-name>
 		<url-pattern>/top</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	
+		<servlet-name>ProfileServletMapping</servlet-name>
+		<servlet-class>servlet.Profile_Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProfileServletMapping</servlet-name>
+		<url-pattern>/profile</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>FormServletMapping</servlet-name>
+		<servlet-class>servlet.Form_Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FormServletMapping</servlet-name>
+		<url-pattern>/form</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>InquiriesServletMapping</servlet-name>
+		<servlet-class>servlet.Inquiries_Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InquiriesServletMapping</servlet-name>
+		<url-pattern>/inquiries</url-pattern>
 	</servlet-mapping>
 
 </web-app>

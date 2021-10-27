@@ -15,24 +15,24 @@
         <p class="title"> お問い合わせ
         </p>
       <nav>
-        <ul class="nav-list">
-          <li class="nav-list-item">
-            <a href="top.jsp">トップ</a>
+        <ul>
+          <li>
+            <a href="top">トップ</a>
           </li>
-          <li class="nav-list-item">ナビ2</li>
-          <li class="nav-list-item">ナビ3</li>
-          <li class="nav-list-item">
-            <a href="profile.jsp">自己紹介</a></li>
-            <li class="nav-list-item">
-              <a href="form.jsp">お問い合わせ</a></li>
+          <li>ナビ2</li>
+          <li>ナビ3</li>
+          <li>
+            <a href="profile">自己紹介</a></li>
+            <li>
+              <a href="form">お問い合わせ</a></li>
         </ul>
       </nav>
     </header>
 
-    <form action="/Web_project2/InquiriesServlet" method="post" class="form-contents" enctype="multipart/form-data" >
+    <form action="/Web_project2/form" method="post" class="form-contents" >
       <h3>名前</h3><input type="text" name="user_name" id="name">
-      <h3 id="gender-t">性別</h3><input type="radio" name="gender"  id="gender0" value ="0">
-      <p id="gender-m">男性</p><input type="radio" name="gender"  id="gender1" value ="1">
+      <h3 id="gender-t">性別</h3><input type="radio" name="gender"  id="gender0" value ="1">
+      <p id="gender-m">男性</p><input type="radio" name="gender"  id="gender1" value ="2">
       <p id="gender-f">女性</p>
       <h3 id="form-title">問合内容</h3><textarea name="form_box" id="form-box">ここに記入してください</textarea>
       <h3 id="file-title">添付ファイル</h3><input type="file" name="file" id="form-file">
