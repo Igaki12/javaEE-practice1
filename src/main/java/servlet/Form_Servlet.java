@@ -22,7 +22,6 @@ public class Form_Servlet extends HttpServlet {
 		String name = request.getParameter("user_name");
 		String intgender = request.getParameter("gender");
 		String box = request.getParameter("form_box");
-		System.out.println(name + intgender + box);
 		
 		String gender = null;
 		if(intgender == null) {
