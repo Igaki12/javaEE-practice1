@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.io.*" %>
+<%File f = new File("/form");
+   String path = f.getName(); %>
     
 
 <!DOCTYPE html>
@@ -7,7 +10,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="/js/check.js"></script>
+    <script type="text/javascript" src="/WEB-INF/js/check.js"></script>
     <title>MySite</title>
     
   </head>
@@ -31,7 +34,7 @@
       </nav>
     </header>
 
-    <form action="/Web_project2/form" method="post" class="form-contents" >
+    <form action="<%=path %>" method="post" class="form-contents" >
       <h3>名前</h3><input type="text" name="user_name" id="name">
       <h3 id="gender-t">性別</h3><input type="radio" name="gender"  id="gender0" value ="1">
       <p id="gender-m">男性</p><input type="radio" name="gender"  id="gender1" value ="2">
@@ -39,7 +42,7 @@
       <h3 id="form-title">問合内容</h3><textarea name="form_box" id ="form-box" 
       onfocus="if (this.value == 'ここに記入してください') this.value = '';" onblur="if (this.value == '') this.value = 'ここに記入してください';">ここに記入してください</textarea>
       <h3 id="file-title">添付ファイル</h3><input type="file" name="file" id="form-file">
-      <input name="btn_submit" value="送信" type="submit" id ="submit-btn" onclick="check();">
+      <input name="btn_submit" value="送信" type="submit" id ="submit-btn" onclick="return check();">
     </form>
 
     <footer>

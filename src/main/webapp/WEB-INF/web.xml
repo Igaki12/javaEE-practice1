@@ -34,15 +34,7 @@
 		<servlet-name>FormServletMapping</servlet-name>
 		<url-pattern>/form</url-pattern>
 	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>FormServletMapping</servlet-name>
-		<servlet-class>servlet.Form_Servlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>FormServletMapping</servlet-name>
-		<url-pattern>/Web_project2/form</url-pattern>
-	</servlet-mapping>
+
 	
 	<servlet>
 		<servlet-name>InquiriesServletMapping</servlet-name>
