@@ -10,7 +10,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="/WEB-INF/js/check.js"></script>
+    <script type="text/javascript" src="/js/check.js"></script>
     <title>MySite</title>
     
   </head>
