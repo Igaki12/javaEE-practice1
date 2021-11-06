@@ -105,7 +105,7 @@ public class Form_Servlet extends HttpServlet {
 		    msg = "失敗a";
 		}catch (Exception ex){
 		    System.out.println(ex.getMessage());
-		    msg = "失敗b63";
+		    msg = "失敗b";
 		}
 		System.out.println(msg);
 		
