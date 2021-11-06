@@ -55,7 +55,6 @@ public class Form_Servlet extends HttpServlet {
 		String msg = "";
 		try {
 		      Class.forName("com.mysql.jdbc.Driver").newInstance();
-		      System.out.println("成功");
 		      conn = DriverManager.getConnection(path, id, pw);
 		      conn.setAutoCommit(false);
 		      
@@ -68,16 +67,17 @@ public class Form_Servlet extends HttpServlet {
 	          String pName = null;
 	          String pGender = null;
 		      String pContents = null;
+		      String pIntgender = null;
 		      while (rs.next()){
 		      	  pNumber = rs.getString("id");
 		          pName = rs.getString("name");
-		          String pIntgender = rs.getString("gender");
+		          pIntgender = rs.getString("gender");
 		          pContents = rs.getString("contents");
 		        	
 		          pGender = "性別不明";
-		          if (pIntgender == "1") {
+		          if (pIntgender.equals("1")) {
 		        		pGender = "男性";
-		          }if (pIntgender == "2") {
+		          }if (pIntgender.equals("2")) {
 		        		pGender = "女性";
 		          }
 		        	

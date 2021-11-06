@@ -10,7 +10,6 @@ String name = request.getParameter("user_name");
 String gender = request.getParameter("gender");
 String box = request.getParameter("form_box");
 Output o = (Output)request.getAttribute("Output");
-System.out.println("ここまでok");
 
 %>
 <!DOCTYPE html>
