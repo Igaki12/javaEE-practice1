@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="model.Human" %>
+<%@ page import="model.Human" import="model.Output"
+import="java.io.*" %>
 <%
 
 request.setCharacterEncoding("UTF-8");
@@ -8,6 +9,8 @@ Human h = (Human)request.getAttribute("human");
 String name = request.getParameter("user_name");
 String gender = request.getParameter("gender");
 String box = request.getParameter("form_box");
+Output o = (Output)request.getAttribute("Output");
+System.out.println("ここまでok");
 
 %>
 <!DOCTYPE html>
@@ -39,6 +42,11 @@ String box = request.getParameter("form_box");
     </header>
     
     <p> <br>名前：<%=h.getName() %>、性別：<%=h.getGender() %>、内容：<%=h.getBox() %>で登録しました。<br></p>
+    
+    
+    
+    <p><br>一個前の履歴<br>
+    <%=o.getId() %>名前：<%=o.getName() %>  性別：<%=o.getGender() %> 内容：<%=o.getContents() %></p>
 
     <footer>
       <p>2021 All Rights Reserved</p>

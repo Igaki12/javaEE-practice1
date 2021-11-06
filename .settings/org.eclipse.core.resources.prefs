@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
+encoding//src/main/java/model/Human.java=UTF-8
+encoding//src/main/java/model/Output.java=UTF-8
+encoding//src/main/java/servlet/Form_Servlet.java=UTF-8
 encoding//src/main/java/servlet/Inquiries_Servlet.java=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/top.jsp=UTF-8
 encoding//src/main/webapp/style.css=UTF-8
