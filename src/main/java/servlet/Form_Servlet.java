@@ -12,9 +12,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Human;
 import model.Output;
+import model.DAO_inquiry;
 
 public class Form_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -32,7 +35,7 @@ public class Form_Servlet extends HttpServlet {
 		String gender = null;
 		if(intgender == null) {
 			gender = "性別不明";
-			intgender = "";
+			intgender = "0";
 		}
 		if(intgender.equals("1")) {
 			gender = "男性";
@@ -42,73 +45,13 @@ public class Form_Servlet extends HttpServlet {
 		}
 		
 		
-		Connection conn = null;
-		PreparedStatement ps = null;
 		
-//		ここからJDBC Driver
-		String path ="jdbc:mysql://localhost:3306/inquirydb";
-		String id ="root";
-		String pw ="";
+//		jDBC Driver's part
+		List<Output> output_list = new ArrayList<>();
+		output_list = model.DAO_inquiry.SelectAllDB();
+		request.setAttribute("output_list",output_list);
 		
-		
-		
-		String msg = "";
-		try {
-		      Class.forName("com.mysql.jdbc.Driver").newInstance();
-		      conn = DriverManager.getConnection(path, id, pw);
-		      conn.setAutoCommit(false);
-		      
-		      
-		      String sql = "SELECT id,name,gender,contents FROM inquiry";
-		      ps = conn.prepareStatement(sql);
-		      ResultSet rs = ps.executeQuery();
-		      
-		      String pNumber = null;
-	          String pName = null;
-	          String pGender = null;
-		      String pContents = null;
-		      String pIntgender = null;
-		      while (rs.next()){
-		      	  pNumber = rs.getString("id");
-		          pName = rs.getString("name");
-		          pIntgender = rs.getString("gender");
-		          pContents = rs.getString("contents");
-		        	
-		          pGender = "性別不明";
-		          if (pIntgender.equals("1")) {
-		        		pGender = "男性";
-		          }if (pIntgender.equals("2")) {
-		        		pGender = "女性";
-		          }
-		        	
-		        	
-		      }
-		      Output out = new Output(pNumber,pName,pGender,pContents);
-		      request.setAttribute("Output", out);
-		        
-		        
-		      
-		      
-		      sql ="INSERT INTO inquiry (name,gender,contents) values(?,?,?)";
-		      ps = conn.prepareStatement(sql);
-		      ps.setString(1, name);
-		      ps.setString(2, intgender);
-		      ps.setString(3, box);
-		      int i = ps.executeUpdate();
-		      System.out.println("result:" + i);
-		      conn.commit();
-		      
-		      
-		      
-		      
-        }catch (ClassNotFoundException ex){
-		    msg = "失敗a";
-		}catch (Exception ex){
-		    System.out.println(ex.getMessage());
-		    msg = "失敗b";
-		}
-		System.out.println(msg);
-		
+		model.DAO_inquiry.InsertDB(name, intgender, box);
 		
 		Human human = new Human(name,gender,box);
 		request.setAttribute("human", human);

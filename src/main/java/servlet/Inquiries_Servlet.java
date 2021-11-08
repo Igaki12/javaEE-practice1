@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.jar.Attributes.Name;
 
 import javax.servlet.RequestDispatcher;
@@ -14,56 +16,74 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import model.Human;
+import model.Output;
+import model.DAO_inquiry;
 
 @MultipartConfig(location="/tmp", maxFileSize=1048576)
 public class Inquiries_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Override
 	
+	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
+		request.setCharacterEncoding("UTF-8");
+		
+	    if(request.getParameter("action") == null) {
+	    	List<Output> output_list = new ArrayList<>();
+			output_list = model.DAO_inquiry.SelectAllDB();
+			request.setAttribute("output_list",output_list);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/inquiries.jsp");
+			dispatcher.forward(request, response);
+			return;
+	    }
+		
+		String action = request.getParameter("action");
+		
+		if (action.equals("delete")) {
+			String str_id = request.getParameter("object");
+			int id = Integer.parseInt(str_id);
+			model.DAO_inquiry.DeleteDB(id);
+			
+			List<Output> output_list = new ArrayList<>();
+			output_list = model.DAO_inquiry.SelectAllDB();
+			request.setAttribute("output_list",output_list);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/inquiries.jsp");
+			dispatcher.forward(request, response);
+		}
+		if (action.equals("update")) {
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/update.jsp");
+			dispatcher.forward(request, response);
+		}
+		
+		
+	}
+	
+	
+	
+	
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response)throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		
-		
-		Part part = request.getPart("file");
-		String file_name = this.getFileName(part);
-		System.out.println(file_name);
-		
-		
+		String str_id = request.getParameter("id");
 		String name = request.getParameter("user_name");
-		String intgender = request.getParameter("gender");
+		String str_gender = request.getParameter("gender");
+		int intgender = 0;
+		intgender = Integer.parseInt(str_gender);
 		String box = request.getParameter("form_box");
+		int id = Integer.parseInt(str_id);
 		
-		String gender = null;
-		if(intgender.equals("0")) {
-			gender = "男性";
-		}
-		if(intgender.equals("1")) {
-			gender = "女性";
-		}
-		
-		Human human = new Human(name,gender,box);
-		request.setAttribute("human", human);
-		System.out.println(human);
-		
-		
+//		jDBC Driver's part
+		model.DAO_inquiry.UpdateDB(id, name, intgender, box);
+		List<Output> output_list = new ArrayList<>();
+		output_list = model.DAO_inquiry.SelectAllDB();
+		request.setAttribute("output_list",output_list);
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/inquiries.jsp");
 		dispatcher.forward(request,response);
 		
-		
-	}
-	private String getFileName(Part part) {
-		String file_name = null;
-		for(String dispotion : part.getHeader("Content-Disposition").split(";")) {
-			if(dispotion.trim().startsWith("filename")) {
-				file_name = dispotion.substring(dispotion.indexOf("=") + 1).replace("\"","").trim();
-				file_name = file_name.substring(file_name.lastIndexOf("\\") + 1);
-				break;
-			}
-		}
-		return file_name;
 	}
 }

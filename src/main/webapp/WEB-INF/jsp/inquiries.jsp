@@ -1,17 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="model.Human" import="model.Output"
+<%@ page import="model.Human" import="model.Output" import="java.util.*"
 import="java.io.*" %>
 <%
-
 request.setCharacterEncoding("UTF-8");
-Human h = (Human)request.getAttribute("human");
-String name = request.getParameter("user_name");
-String gender = request.getParameter("gender");
-String box = request.getParameter("form_box");
-Output o = (Output)request.getAttribute("Output");
 
+File f = new File("/inquiries");
+String path = f.getPath();
 %>
+<% List<Output> output_list = (List<Output>)request.getAttribute("output_list"); %>
+
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -40,13 +38,43 @@ Output o = (Output)request.getAttribute("Output");
       </nav>
     </header>
     
+<%
+if((Human)request.getAttribute("human") != null) {
+
+Human h = (Human)request.getAttribute("human");
+String name = request.getParameter("user_name");
+String gender = request.getParameter("gender");
+String box = request.getParameter("form_box");
+%>
+    
     <p> <br>名前：<%=h.getName() %>、性別：<%=h.getGender() %>、内容：<%=h.getBox() %>で登録しました。<br></p>
     
-    
-    
-    <p><br>一個前の履歴<br>
-    <%=o.getId() %>名前：<%=o.getName() %>  性別：<%=o.getGender() %> 内容：<%=o.getContents() %></p>
+<%} %>
 
+    
+    
+    <br><h3>履歴</h3><p><br>
+    <% for (Output output : output_list) {
+    	String id = output.getId();
+    	String gender = "性別不明";
+    	if (output.getGender().equals("1")){
+    		gender = "男性";
+    	}
+    	if (output.getGender().equals("2")){
+    		gender = "女性";
+    	}
+    	%>
+    <%=output.getId() %>名前：<%=output.getName() %>  性別：<%=gender %> <br>内容：<%=output.getContents() %></p>
+    <input type="button" value="削除" name="delete-btn" onclick="location.href='<%=path %>?action=delete&object=<%=output.getId() %>'">
+    <input type="button" value="更新" name="update-btn" onclick="location.href='<%=path %>?action=update&object=<%=output.getId() %>'">
+    <br>
+    
+    <%if(request.getParameter("id") != null && request.getParameter("id").equals(id)){%>
+    <p>更新されました！</p>
+    <%} %>
+    
+
+<%} %>
     <footer>
       <p>2021 All Rights Reserved</p>
     </footer>
