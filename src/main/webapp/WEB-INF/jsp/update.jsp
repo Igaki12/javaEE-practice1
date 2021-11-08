@@ -36,9 +36,9 @@
         </ul>
       </nav>
     </header>
-
+    <h3>変更するお問い合わせ番号:<%=o.getId() %></h3><br>
+    
     <form action="<%=path %>?id=<%=o.getId() %>" method="post" class="form-contents" >
-      <h3>変更するお問い合わせ番号:<%=o.getId() %></h3>
       <h3>名前</h3><input type="text" name="user_name" id="name" value="<%=o.getName() %>">
       <h3 id="gender-t">性別</h3>
       <input type="radio" name="gender"  id="gender0" value ="1"<%if(o.getGender().equals("1")) { %>checked<%} %>>
