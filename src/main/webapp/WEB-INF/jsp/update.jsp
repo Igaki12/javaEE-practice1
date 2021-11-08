@@ -39,13 +39,13 @@
 
     <form action="<%=path %>?id=<%=o.getId() %>" method="post" class="form-contents" >
       <h3>変更するお問い合わせ番号:<%=o.getId() %></h3>
-      <h3>名前</h3><input type="text" name="user_name" id="name" placeholder="<%=o.getName() %>">
+      <h3>名前</h3><input type="text" name="user_name" id="name" value="<%=o.getName() %>">
       <h3 id="gender-t">性別</h3>
       <input type="radio" name="gender"  id="gender0" value ="1"<%if(o.getGender().equals("1")) { %>checked<%} %>>
       <p id="gender-m">男性</p>
       <input type="radio" name="gender"  id="gender1" value ="2" <%if(o.getGender().equals("2")) { %>checked<%} %>>
       <p id="gender-f">女性</p>
-      <h3 id="form-title">問合内容</h3><textarea name="form_box" id ="form-box" placeholder="" > <%=o.getContents() %> </textarea>
+      <h3 id="form-title">問合内容</h3><textarea name="form_box" id ="form-box"><%=o.getContents() %></textarea>
       <h3 id="file-title">添付ファイル</h3><input type="file" name="file" id="form-file">
       <input name="btn_submit" value="送信" type="submit" id ="submit-btn" onclick="return check();">
     </form>
