@@ -53,7 +53,7 @@ String box = request.getParameter("form_box");
 
     
     
-    <br><h3>履歴</h3><p><br>
+    <br><h3>履歴</h3><br>
     <% for (Output output : output_list) {
     	String id = output.getId();
     	String gender = "性別不明";
@@ -64,7 +64,7 @@ String box = request.getParameter("form_box");
     		gender = "女性";
     	}
     	%>
-    <%=output.getId() %>名前：<%=output.getName() %>  性別：<%=gender %> <br>内容：<%=output.getContents() %></p>
+    <p><%=output.getId() %>名前：<%=output.getName() %>  性別：<%=gender %> <br>内容：<%=output.getContents() %></p>
     <input type="button" value="削除" name="delete-btn" onclick="location.href='<%=path %>?action=delete&object=<%=output.getId() %>'">
     <input type="button" value="更新" name="update-btn" onclick="location.href='<%=path %>?action=update&object=<%=output.getId() %>'">
     <br>

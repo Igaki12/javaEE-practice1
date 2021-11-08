@@ -67,7 +67,6 @@ public class DAO_inquiry {
 	}
 	
 	public static List<Output> SelectAllDB() {
-//		Ç±ÇÍÇæÇØìÆçÏämîFçœÇ›
 		List<Output> output_list = new ArrayList<>(); 
 		
 		String path ="jdbc:mysql://localhost:3306/inquirydb";
@@ -143,6 +142,48 @@ public class DAO_inquiry {
 			
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
+		}
+	}
+	public static Output SelectDB(String id) {
+		String path ="jdbc:mysql://localhost:3306/inquirydb";
+		String user_id ="root";
+		String pw ="";
+		Connection conn = null;
+		PreparedStatement ps = null;
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+		      conn = DriverManager.getConnection(path, user_id, pw);
+		      conn.setAutoCommit(false);
+			
+			String sql = "SELECT * FROM inquiry WHERE id=?";
+		      ps = conn.prepareStatement(sql);
+		      ps.setInt(1,Integer.parseInt(id));
+		      
+		      ResultSet rs = ps.executeQuery();
+		      rs.next();
+		      String name  = null;
+		      String gender = null;
+		      String contents = null;	      
+			  name = rs.getString("name");
+			  gender = rs.getString("gender");
+			  contents  = rs.getString("contents");
+			      
+			      Output output = new Output(id,name,gender,contents);
+
+		      System.out.println("Success_selectOne");
+		      conn.close();
+		      ps.close();
+		      rs.close();
+		      
+		      return output;
+		      
+		      
+			
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+			
+			return null;
 		}
 	}
 	

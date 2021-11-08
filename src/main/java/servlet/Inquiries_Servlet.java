@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import model.Human;
@@ -50,8 +51,13 @@ public class Inquiries_Servlet extends HttpServlet {
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/inquiries.jsp");
 			dispatcher.forward(request, response);
+			return;
 		}
 		if (action.equals("update")) {
+			String id = request.getParameter("object");
+			Output pre_update = model.DAO_inquiry.SelectDB(id);
+			System.out.println(pre_update.getId() + "," + pre_update.getName() + "," + pre_update.getGender() + "," + pre_update.getContents() );
+		    request.setAttribute("pre_update",pre_update);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/update.jsp");
 			dispatcher.forward(request, response);
@@ -66,7 +72,8 @@ public class Inquiries_Servlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response)throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+
+//		ここからupdate
 		String str_id = request.getParameter("id");
 		String name = request.getParameter("user_name");
 		String str_gender = request.getParameter("gender");
@@ -75,7 +82,6 @@ public class Inquiries_Servlet extends HttpServlet {
 		String box = request.getParameter("form_box");
 		int id = Integer.parseInt(str_id);
 		
-//		jDBC Driver's part
 		model.DAO_inquiry.UpdateDB(id, name, intgender, box);
 		List<Output> output_list = new ArrayList<>();
 		output_list = model.DAO_inquiry.SelectAllDB();
