@@ -2,7 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@page import="java.io.*" %>
 <%File f = new File("/form");
-   String path = f.getName(); %>
+   String path = f.getName(); 
+   File c = new File("js/check.js");
+   String pathC = c.getName();
+   
+   %>
     
 
 <!DOCTYPE html>
@@ -10,12 +14,13 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="/js/check.js"></script>
+    
     <title>MySite</title>
     
   </head>
 
   <body>
+  
     <header>
         <p class="title"> お問い合わせ
         </p>
@@ -42,14 +47,37 @@
       <h3 id="form-title">問合内容</h3><textarea name="form_box" id ="form-box" 
       onfocus="if (this.value == 'ここに記入してください') this.value = '';" onblur="if (this.value == '') this.value = 'ここに記入してください';">ここに記入してください</textarea>
       <h3 id="file-title">添付ファイル</h3><input type="file" name="file" id="form-file">
-      <input name="btn_submit" value="送信" type="submit" id ="submit-btn" onclick="return check();">
-    </form>
+      <input name="btn_submit" value="送信" type="submit" id ="submit_btn">
+      
+      </form>
+<script> 
+    function check() {
+        if (contact.user_name.value == "") {
+            alert("名前を入力してください");
+            return false;
+          }
+          if(contact.gender.value == "") {
+            alert("性別を選んでください");
+            return false;
+          }
+          if (contact.form_box.value == "ここに記入してください" || contact.form_box.value == ""){
+            alert("問い合わせ内容を入力してください");
+            return false;
+          }
+          return true;
+        }
+
+      console.log(document.getElementById("submit_btn"));    
+      const button = document.getElementById('submit_btn');
+      if(button.onclick) { check();}
+      </script>
+    
 
     <footer>
       <p>2021 All Rights Reserved</p>
     </footer>
 
-
+    
   </body>
 </html>
 

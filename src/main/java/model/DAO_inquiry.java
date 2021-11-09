@@ -9,6 +9,7 @@ import java.util.List;
 
 public class DAO_inquiry {
 	
+	
 	public static void DeleteDB(int id) {
 		String path ="jdbc:mysql://localhost:3306/inquirydb";
 		String user_id ="root";

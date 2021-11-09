@@ -4,7 +4,7 @@
 <%File f = new File("/inquiries");
    String path = f.getName(); 
    
-       Output o = (Output)request.getAttribute("pre_update");
+Output o = (Output)request.getAttribute("pre_update");
    %>
     
 
@@ -36,7 +36,7 @@
         </ul>
       </nav>
     </header>
-    <h3>変更するお問い合わせ番号:<%=o.getId() %></h3><br>
+    <br><h3>変更するお問い合わせ番号:<%=o.getId() %></h3><br>
     
     <form action="<%=path %>?id=<%=o.getId() %>" method="post" class="form-contents" >
       <h3>名前</h3><input type="text" name="user_name" id="name" value="<%=o.getName() %>">

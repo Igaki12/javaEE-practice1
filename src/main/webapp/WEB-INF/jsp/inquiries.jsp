@@ -8,7 +8,8 @@ request.setCharacterEncoding("UTF-8");
 File f = new File("/inquiries");
 String path = f.getPath();
 %>
-<% List<Output> output_list = (List<Output>)request.getAttribute("output_list"); %>
+<%
+List<Output> output_list = (List<Output>)request.getAttribute("output_list"); %>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -70,7 +71,7 @@ String box = request.getParameter("form_box");
     <br>
     
     <%if(request.getParameter("id") != null && request.getParameter("id").equals(id)){%>
-    <p>更新されました！</p>
+    <p>　↑ 更新されました！</p>
     <%} %>
     
 
